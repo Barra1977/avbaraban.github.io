@@ -17,16 +17,15 @@ nav {
     margin: 0;
 }
 
-.container {
+.transparent {
+    background-color: rgba(0,0,0,0);
+}
+
+.static-background {
     background-image: url("../bg.jpg");
     background-size: cover;
 }
 
-@media only screen and (min-width: 960px) {
-    .site-body {
-        margin: 0 10%;
-    }
-}
 
 nav {
     text-align: center;
@@ -50,8 +49,8 @@ nav>ul>li {
     font-family: sans-serif;
     text-shadow: 1px 1px 4px black;
     text-transform: uppercase;
-    padding: 32px 8px;
-    width: 184px;
+    padding: 32px 32px;
+    width: auto;
     display: inline-block;
     cursor: pointer;
 }
@@ -71,6 +70,20 @@ nav>ul>li>a {
     text-align: center;
 }
 
+.scroll-up {
+    width: 48px;
+    height: 48px;
+    margin: 1em;
+    padding: 8px;
+    left: 92%;
+    top: 80%;
+    cursor: pointer;
+    position: absolute;
+    background-color: #0e4792;
+    color: white;
+    content: url("../arrow.png");
+}
+
 .portrait {
     border: 5px solid white;
     box-shadow: 1px 1px 2px 1px black;
@@ -83,71 +96,68 @@ nav>ul>li>a {
 
 }
 
-
-.bio-article {
+.section-container {
     padding: 0;
-    margin: 32px;
-    background-color: #f0f0f0;
-    box-shadow: 1px 1px 8px 1px black;
-}
-
-.bio-article>h1 {
-    border-bottom: solid 1px black;
-    background-color: #0e4792;
+    margin: 0;
+    background-color: #303030;
     color: white;
-    padding: 24px;
-    margin: 0 0 24px 0;
 }
 
-.bio-article>p {
-    padding: 0 24px 24px 24px;
-    text-align: justify;
-    font-size: 14pt;
-    font-family: sans-serif;
-}
-
-.bio-article>p::first-line {
-    display: inline-block;
-    text-indent: 1.25cm;
-}
-
-.droplist {
-    margin: 32px;
-}
-
-.accomplishment-container {
-    border: solid 1px black;
-    padding: 0;
-    margin: 0 0 16px 0;
-    background-color: #f0f0f0;
-    box-shadow: 1px 1px 5px 1px black;
-}
-
-.acc-title {
+.section-title {
     cursor: pointer;
-    padding: 16px 32px 16px 32px;
+    text-align: right;
+    padding: 2em 16% 2em 0em;
     margin: 0;
-    border-bottom: solid 1px black;
     color: white;
-    background-color: #0e4792;
+    text-transform: uppercase;
+    /* background-color: #0e4792; */
+    background: linear-gradient(135deg , #0e4792 66%, #0a3063 33%);
 }
 
-.acc-title>.img-wrapper {
-    float: right;
-    margin: 0;
-    padding: 0;
-    height: 32px;   
-}
-
-.acc-title>.img-wrapper>img {
-    padding: 0;
-    margin: 0;
-}
-
-.acc-body {
+.section-body {
+    text-align: justify;
     font-family: sans-serif;
     font-size: 14pt;
-    padding: 0 32px;
+    margin: 0;
+    padding: 2em 12em;
+}
+
+
+@media only screen and (max-width: 960px) {
+    .section-body {
+        padding: 2em;
+    }
+
+    .section-title {
+        background: linear-gradient(135deg , #0e4792 50%, #0a3063 50%);
+    }
+}
+
+.section-container:nth-child(2n) {
+    background-color: #f0f0f0;
+    color: black;
+}
+
+.accolades-body {
+    text-align: center;
+}
+
+.accolade {
+    display: inline-block;
+    margin: 0 32px;
+}
+
+.accolade>img {
+    transition: 300ms;
+    height: 128px;
+    filter: grayscale(100%);
+    cursor: pointer;
+}
+
+.accolade:hover img {
+    transition: 300ms;
+    height: 184px;
+    filter: none;
 }
 
 .footer {
@@ -163,12 +173,48 @@ nav>ul>li>a {
     display: none;
 }
 
-.rotate-180 {
-    transform: rotate(180deg);
-    transition: 500ms;
+.inspector {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0.1, 0.1, 0.1, 0.7);
+    text-align: center;
 }
 
-.rotate-0 {
-    transform: rotate(0deg);
-    transition: 500ms;
+.inspector > .img-wrapper {
+    height: 80%;
+}
+
+.inspector > .img-wrapper > img {
+    height: 80%;
+}
+
+.inspector > div > p {
+    color: rgb(248, 240, 202);
+    font-size: 18pt;
+    height: 20%;
+}
+
+.inspector > .button-wrapper {
+    margin: 5% 0;
+}
+
+.inspector .close {
+    margin: auto;
+    padding: auto;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    padding: auto;
+    font-family: sans-serif;
+    font-size: 16px;
+    padding: 32px;
+    border-radius: 50%;
+}
+
+.disable-scroll {
+    height: 100%;
+    overflow: hidden;
 }
